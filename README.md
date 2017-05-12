@@ -28,5 +28,7 @@ func plain() {
 ## 解决办法
 
 首先，这并不是一个问题。`Rx`的逻辑就是如此。
+
 然后针对当前场景`Cell`中，如果`Cell`中出现这样的`subscribe`出现`deinit`的时候，
+
 可以使用最简单的方法去处理：在填充cell的时候去重置`reuseDisposeBag`，即可解决。
