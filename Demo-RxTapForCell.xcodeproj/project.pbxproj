@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		24AE269C437474CAE1E9EBE3 /* Pods_Demo_RxTapForCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC626FA3E336ADD3D8B5095 /* Pods_Demo_RxTapForCell.framework */; };
+		32B5C79D1EC5D08D0032CE22 /* DeinitForRx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B5C79C1EC5D08D0032CE22 /* DeinitForRx.swift */; };
 		32D045271EC1AB300038A78E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D045261EC1AB300038A78E /* AppDelegate.swift */; };
 		32D045291EC1AB300038A78E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D045281EC1AB300038A78E /* ViewController.swift */; };
 		32D0452C1EC1AB300038A78E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D0452A1EC1AB300038A78E /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32B5C79C1EC5D08D0032CE22 /* DeinitForRx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeinitForRx.swift; sourceTree = "<group>"; };
 		32D045231EC1AB300038A78E /* Demo-RxTapForCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-RxTapForCell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D045261EC1AB300038A78E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32D045281EC1AB300038A78E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +45,7 @@
 		32D0451A1EC1AB300038A78E = {
 			isa = PBXGroup;
 			children = (
+				32B5C79C1EC5D08D0032CE22 /* DeinitForRx.swift */,
 				32D045251EC1AB300038A78E /* Demo-RxTapForCell */,
 				32D045241EC1AB300038A78E /* Products */,
 				632DDE92ADE005D00DFFAD8B /* Pods */,
@@ -214,6 +217,7 @@
 			files = (
 				32D045291EC1AB300038A78E /* ViewController.swift in Sources */,
 				32D045271EC1AB300038A78E /* AppDelegate.swift in Sources */,
+				32B5C79D1EC5D08D0032CE22 /* DeinitForRx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +383,7 @@
 				32D045371EC1AB300038A78E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

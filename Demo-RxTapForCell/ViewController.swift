@@ -16,17 +16,22 @@ class ViewController: UIViewController {
 
     let list = UITableView()
     let binded = PublishSubject<String>()
+    let cacheCell = Cell.init(style: .default, reuseIdentifier: "123")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        plain()
+
+        return
         list.delegate = self
         list.dataSource = self
-//        list.register(Cell.self, forCellReuseIdentifier: "cell")
         view.addSubview(list)
         list.frame = view.bounds
 
         binded
+            .debug()
             .subscribe { (event) in
                 print(event)
             }
@@ -41,8 +46,17 @@ class ViewController: UIViewController {
     func config(cell: Cell) {
         cell.backgroundColor = UIColor.gray
 
-        cell.tap.rx.event
-            .map { $0.description }
+        for view in cell.contentView.subviews {
+            view.removeFromSuperview()
+        }
+
+        let button = UIButton.init()
+        button.backgroundColor = UIColor.blue
+        button.frame = cell.contentView.frame
+        cell.contentView.addSubview(button)
+        button.rx.tap.throttle(1, latest: false, scheduler: MainScheduler.instance).map ({ (_) -> String in
+            return "bingo"
+        })
             .bind(to: binded)
             .addDisposableTo(cell.reuseDisposeBag)
     }
@@ -59,8 +73,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         /*** 忽略dequeueReusableCell返回值需要扔给TableView ***/
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? Cell ?? Cell.init(style: .default, reuseIdentifier: "cell")
-        config(cell: cell)
+        config(cell: cacheCell)
         return 100
     }
 }
@@ -69,23 +82,20 @@ class Cell: UITableViewCell {
 
     var reuseDisposeBag = DisposeBag()
 
-    let tap = UITapGestureRecognizer()
-
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setup() {
-        addGestureRecognizer(tap)
-    }
-
     override func prepareForReuse() {
         super.prepareForReuse()
         reuseDisposeBag = DisposeBag()
+    }
+    
+    deinit {
+        print("")
     }
 }
